@@ -7,7 +7,7 @@
 *  Name: Kemal Batu Turgut Student ID: 122277239 Date: 10/13/2024
 *  Cyclic Web App URL: //replit.com/join/ezoqhbddvr-kemalbatu6
 * 
-*  GitHub Repository URL: //github.com/kbturgut/web322-app.git
+*  GitHub Repository URL: https://github.com/kbturgut/web322-app.git
 *
 ********************************************************************************/ 
 const express = require('express');
