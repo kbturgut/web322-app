@@ -10,29 +10,18 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#"><span>WEB322 - Kemal Batu Turgut</span></a>
+        <a class="navbar-brand" href="#">WEB322 - Kemal Batu Turgut</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="/shop">Shop</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/items">Items</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/items/add">Add Item</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categories">Categories</a>
-                </li>
+                <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="/items">Items</a></li>
+                <li class="nav-item active"><a class="nav-link" href="/items/add">Add Item</a></li>
+                <li class="nav-item"><a class="nav-link" href="/categories">Categories</a></li>
             </ul>
         </div>
     </nav>
@@ -53,11 +42,7 @@
                     <div class="form-group">
                         <label for="category">Category</label>
                         <select class="form-control" id="category" name="category" required>
-                            <option value="1">Home, Garden</option>
-                            <option value="2">Electronics, Computers, Video Games</option>
-                            <option value="3">Clothing</option>
-                            <option value="4">Sports & Outdoors</option>
-                            <option value="5">Pets</option>
+                            <!-- Categories will be dynamically populated here -->
                         </select>
                     </div>
                     <div class="form-group">
@@ -74,5 +59,20 @@
         </div>
     </div>
 
+    <script>
+        // Fetch categories and populate the dropdown
+        fetch('/categories')
+            .then(res => res.json())
+            .then(categories => {
+                const categorySelect = document.getElementById('category');
+                categories.forEach(category => {
+                    const option = document.createElement('option');
+                    option.value = category.id;
+                    option.textContent = category.category;
+                    categorySelect.appendChild(option);
+                });
+            })
+            .catch(err => console.error("Failed to load categories:", err));
+    </script>
 </body>
 </html>
